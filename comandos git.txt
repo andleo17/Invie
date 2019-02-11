@@ -1,0 +1,97 @@
+Iniciar un repositorio:
+    git init [nombre]
+
+Borrar un repositorio:
+    Borrar la carpeta ".git"
+
+Ver estado de archivos:
+    git status
+
+Agregar a Staging Area:
+    git add [archivo o carpeta]
+    git add -A                      <--     Agrega todos los archivos de golpe
+    git add .                       <--     Agrega archivos nuevos y modificados (only)
+    git add -u                      <--     Agrega archivos modificados y borrados (only)
+    git add -n [archivo o carpeta]  <--     Verifica que existe el archivo en el Staging Area
+
+Eliminar archivos:
+    git rm --cached [archivo o carpeta]    <--    Elimina archivos del Staging Area
+    gir rm -f [archivo o carpeta]          <--    Elimina archivos incluso del disco
+
+Agregar archivos al repositorio:
+    git commit -m "[mensaje]"
+    git commit -m --amend           <--     Agrega archivos a un commit anterior
+
+Etiquetar commits:
+    git tag [opciones] [SHA-1]
+        -a [anotacion]      <--     Crea anotaciones
+        -m "[mensaje]"      <--     Colocar un mensaje
+        -l "[anotacion]"    <--     Busca etiquetas
+        -f                  <--     Renombrar tag
+        -d [anotacion]      <--     Borrar tag
+
+Ver todos los commits:
+    git log
+        --oneline           <--     Resume el log
+        --graph             <--     Muestra un gráfico del proyecto
+        -[numero]           <--     Muestra los n últimos commits
+    
+Ver cambios entre versiones:
+    git diff [SHA-1 a] [SHA-1 b]
+    
+Regresar a un archivo anterior:
+    git reset [modo] [SHA-1]
+        modos:
+            --soft          <--     Regresa al commit señalado, como si nunca se hubiese escrito
+            --mixed         <--     Quita el commit señalado y regresa al Working Directory
+            --hard          <--     Borra las modificaciones y regresa al momento justo al commit
+
+Trabajar con ramas:
+    git branch [nombre]
+        -l                  <--     Lista todas las ramas
+        -d [nombre]         <--     Borrar ramas
+        -D [nombre]         <--     Forzar borrado de ramas
+        -m [nombreI] [nombreF] <--  Renombrar ramas
+
+Moverse entre ramas:
+    git checkout [nombre]
+        [SHA-1]             <--     Moverse entre commits
+        -b [nombre]         <--     Crear una rama a partir de un commit
+
+Combinar rama con rama actual:
+    git merge [rama]
+
+Cambiar historial del proyecto:
+    git rebase [rama]
+
+Guardar archivo temporalmente:
+    git stash
+        -u                  <--     Crea un stash con todos los archivos
+        list                <--     Muestra una lista con todos los stash
+        clear               <--     Elimina todos los stash
+        show stash@[numero] <--     Muestra los archivos cambiados de ese stash
+        show -p stash@[numero] <--  Muestra los archivos cambiados de ese stash (detallado)
+        drop stash@[numero] <--     Elimina el stash especificado
+        apply               <--     Aplica el stash reciente
+        apply stash@[numero]<--     Aplica los cambios del stash especificado
+
+Clonar proyectos:
+    git clone [llave SSH]
+
+Añadir una llave SSH a GitHub:
+    ssh-keygen -t rsa -b 4096 -C [email]
+
+Conectar a GitHub:
+    git remote
+        add [nombre] [ruta SSH o HTTPS]     <--     Conectar a GitHub
+        -v                                  <--     Revisar si ya conectó
+        remove [nombre]                     <--     Borrar conexión
+
+Traer datos de un repositorio remoto:
+    git fetch [nombre] [rama]
+    git pull [nombre] [rama]                <--     Hace el merge automáticamente
+
+Enviar datos a un repositorio remoto:
+    git push [nombre] [rama]
+                        --tags              <--     Envía los tags
+                
